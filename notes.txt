@@ -1,1 +1,10 @@
 To compile scss: npm run build-css
+
+
+# If issues with activating virtual environment
+Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+
+Activate the virtual environment
+.venv\Scripts\Activate
+
+
