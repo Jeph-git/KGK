@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+
+{% block title %}More - KGK{% endblock %}
+
+{% block content %}
+
+
+
+
+<div class="container">
+
+
+    <div class="container-fluid position-relative" style="padding-top: 60px;">
+        <div class="row justify-content-center">
+            <div class="col-12 col-sm-10 col-md-8 col-lg-6">
+                {% for type, message in get_flashed_messages(with_categories=true) %}
+                    <div id="flash-message" class="alert {% if type == 'success' %}alert-success{% elif type == 'danger' %}alert-danger{% elif type == 'warning' %}alert-warning{% endif %} alert-dismissible fade show position-absolute top-50 start-50 translate-middle mt-4 w-100 " role="alert" style="z-index: 1050;">
+                        {{ message }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <h1 class="mt-4">Settings</h1>
+
+    <div class="container-fluid col-12 mt-3">
+        <div class="container d-flex flex-column ">
+            <div class="row mb-2 col-lg-4">
+                <button type="button" class="btn btn-primary text-nowrap" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="message1">Endre meldingstype 1</button>
+            </div>
+            <div class="row mb-2 col-lg-4">
+                <button type="button" class="btn btn-primary text-nowrap" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="message2">Endre meldingstype 2</button>
+            </div>
+            <div class="row  col-lg-4">
+                <button type="button" class="btn btn-primary text-nowrap" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="message3">Endre meldingstype 3</button>
+            </div>
+        </div>
+
+        
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Change message</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="modalForm" method="POST">
+                            {{ form.hidden_tag() }}
+                            <input type="hidden" name="modal_message_type" id="modal_message_type">
+                            <div class="mb-3">
+                                <label for="message-text" class="col-form-label">Message:</label>
+                                {{ form.message(class="form-control", id="message-text") }}
+                            </div>
+                            <button type="submit" class="btn btn-primary">Save message</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Script to make the modal work -->
+<script>
+    var exampleModal = document.getElementById('exampleModal');
+    exampleModal.addEventListener('show.bs.modal', function (event) {
+        // Button that triggered the modal
+        var button = event.relatedTarget;
+        // Extract info from data-bs-* attributes
+        var messageType = button.getAttribute('data-bs-whatever');
+        // Find the hidden input in the form and set its value
+        var modalMessageTypeInput = document.getElementById('modal_message_type');
+        modalMessageTypeInput.value = messageType;
+    });
+</script>
+
+{% endblock %}

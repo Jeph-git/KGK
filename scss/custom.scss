@@ -1,0 +1,13 @@
+// Step 1: Import Bootstrap functions first to enable variable customization
+@import "../node_modules/bootstrap/scss/functions";
+
+// Step 2: Override Bootstrap variables (e.g., primary color)
+$primary: #0032a0; // Change Bootstrap's primary color
+$secondary: #6c757d; // Change secondary color, etc.
+
+// Step 3: Import Bootstrap components and utilities
+@import "../node_modules/bootstrap/scss/variables";
+@import "../node_modules/bootstrap/scss/mixins";
+@import "../node_modules/bootstrap/scss/bootstrap";
+
+
