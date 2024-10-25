@@ -36,4 +36,4 @@ def settings():
         return redirect(url_for('settings.settings'))
     
     # For GET request, just render the page with the form
-    return render_template('web_setting.html', form=form)
+    return render_template('web_setting.html', form=form, active='settings')

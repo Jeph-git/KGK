@@ -79,16 +79,13 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('home') }}">Home</a>
+                        <a class="nav-link {% if active == 'home' %}active{% endif %}" href="{{ url_for('home') }}">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('more.choices_func') }}">More</a>
+                        <a class="nav-link {% if active == 'more' %}active{% endif %}" href="{{ url_for('more.choices_func') }}">More</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">History</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('settings.settings') }}">Settings</a>
+                        <a class="nav-link {% if active == 'settings' %}active{% endif %}" href="{{ url_for('settings.settings') }}">Settings</a>
                     </li>
 
                 </ul>
@@ -100,13 +97,13 @@
     <nav class="navbar fixed-bottom navbar-expand-sm bg-primary navbar-dark d-block d-sm-none shadow-lg">
         <ul class="navbar-nav mx-auto flex-row gap-3 justify-content-between w-100">
             <li class="nav-item ms-3">
-                <a class="nav-link d-flex flex-column align-items-center" href="{{ url_for('home') }}">
+                <a class="nav-link d-flex flex-column align-items-center {% if active == 'home' %}active{% endif %}" href="{{ url_for('home') }}">
                     <i class="bi bi-house"></i>
                     <span>Home</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link d-flex flex-column align-items-center" href="{{ url_for('more.choices_func') }}">
+                <a class="nav-link d-flex flex-column align-items-center {% if active == 'more' %}active{% endif %}" href="{{ url_for('more.choices_func') }}">
                     <i class="bi bi-three-dots"></i>
                     <span>More</span>
                 </a>
@@ -118,7 +115,7 @@
                 </a>
             </li> -->
             <li class="nav-item me-3">
-                <a class="nav-link d-flex flex-column align-items-center" href="{{ url_for('settings.settings') }}">
+                <a class="nav-link d-flex flex-column align-items-center {% if active == 'settings' %}active{% endif %}" href="{{ url_for('settings.settings') }}">
                     <i class="bi bi-gear"></i>
                     <span>Settings</span>
                 </a>

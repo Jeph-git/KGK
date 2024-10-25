@@ -5,7 +5,9 @@
 {% block content %}
 
 <style>
-
+    body {
+        margin-bottom: 50px; /* Add margin to the bottom of the body */
+    }
     @media only screen and (max-height: 806px) and (max-width: 575px) {
         body {
             margin-bottom: 100px; /* Reset body height for larger screens */
@@ -42,11 +44,14 @@
             <tbody>
                 <!-- Iterate over bus_data dictionary -->
                 {% for group, buses in bus_data.items() %}
+                    <tr>
+                        <td rowspan="{{ buses|length + 1 }}">
+                            {{ group }}<br>
+                            <input type="checkbox" class="select-all" data-group="{{ group }}"> Select All
+                        </td>
+                    </tr>
                     {% for bus in buses %}
                         <tr>
-                            {% if loop.index == 1 %}  <!-- Only display group name for the first bus in the group -->
-                                <td rowspan="{{ buses|length }}">{{ group }}</td>
-                            {% endif %}
                             <td>{{ bus }}</td>
                             <td>
                                 <input type="checkbox" name="buses" value="{{ bus }}" class="bus-checkbox" data-group="{{ group }}">

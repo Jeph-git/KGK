@@ -40,8 +40,8 @@ def home():
         return redirect(url_for('home'))  # Redirect to avoid resubmission
 
     # Pass the messages to the template
-    return render_template('index.html', form=form, messages_dict=messages_dict)
+    return render_template('index.html', form=form, messages_dict=messages_dict, active='home')
 
-# if __name__ == '__main__':
-#     # app.run(debug=True, host= '192.168.10.222') # This one for running on local network
-#     app.run(debug=True)
+if __name__ == '__main__':
+    # app.run(debug=True, host= '192.168.10.222') # This one for running on local network
+    app.run(debug=True)

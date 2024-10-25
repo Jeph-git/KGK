@@ -42,4 +42,4 @@ def choices_func():
 
         return redirect(url_for('more.choices_func'))
 
-    return render_template('more.html', bus_data=bus_data, messages=messages)
+    return render_template('more.html', bus_data=bus_data, messages=messages, active='more')
