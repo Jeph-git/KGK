@@ -1,12 +1,8 @@
 from flask import Blueprint, render_template, request, flash, redirect, url_for
 import json
-
+from utils import load_messages
 all_choices = Blueprint('more', __name__)
 
-# Function to load the messages from JSON
-def load_messages():
-    with open('messages.json', 'r') as file:
-        return json.load(file)
 
 def format_buses(buses):
     n = len(buses)
@@ -22,8 +18,8 @@ def format_buses(buses):
 @all_choices.route('/more', methods=['GET', 'POST'])
 def choices_func():
     bus_data = {
-        'Unibuss': ['Bus 1', 'Bus 2', 'Bus 3', 'Bus 4', 'Bus 5'],
-        'Oslobuss': ['Bus A', 'Bus B', 'Bus C', 'Bus D', 'Bus E']
+        'Unibuss': ['Buss 1', 'Buss 2', 'Buss 3', 'Buss 4', 'Buss 5'],
+        'Oslobuss': ['Buss A', 'Buss B', 'Buss C', 'Buss D', 'Buss E']
     }
     
     messages = load_messages()  # Load messages from JSON
