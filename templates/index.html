@@ -4,43 +4,45 @@
 
 {% block content %}
 
-<div class="container-fluid position-relative">
-    <div class="row justify-content-center">
-        <div class="col-12 col-sm-10 col-md-8 col-lg-6">
-            {% for type, message in get_flashed_messages(with_categories=true) %}
-                <div id="flash-message" class="alert {% if type == 'success' %}alert-success{% elif type == 'danger' %}alert-danger{% elif type == 'warning' %}alert-warning{% endif %} alert-dismissible fade show position-absolute top-50 start-50 translate-middle mt-4 w-100 " role="alert" style="z-index: 1050;">
-                    {{ message }}
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-            {% endfor %}
+<div class="container">
+    <div class="container-fluid position-relative" style="padding-top: 60px;">
+        <div class="row justify-content-center">
+            <div class="col-12 col-sm-10 col-md-8 col-lg-6">
+                {% for type, message in get_flashed_messages(with_categories=true) %}
+                    <div id="flash-message" class="alert {% if type == 'success' %}alert-success{% elif type == 'danger' %}alert-danger{% elif type == 'warning' %}alert-warning{% endif %} alert-dismissible fade show position-absolute top-50 start-50 translate-middle mt-4 w-100 " role="alert" style="z-index: 1050;">
+                        {{ message }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                {% endfor %}
+            </div>
         </div>
     </div>
-</div>
 
-<div class="container-fluid mt-5">
-    <div class="row justify-content-center">
-        <div class="col-12 col-sm-10 col-md-8 col-lg-6">
+    <div class="container-fluid mt-5">
+        <div class="row justify-content-center">
+            <div class="col-12 col-sm-10 col-md-8 col-lg-6 border border-2 p-2 rounded">
 
-            <!-- Option Form -->
-            <form id="optionForm" method="POST">
-                {{ form.hidden_tag() }}
-                <div class="form-group">
-                    {{ form.groups(class="form-control select-multiple") }}
-                </div>
+                <!-- Option Form -->
+                <form id="optionForm" method="POST">
+                    {{ form.hidden_tag() }}
+                    <div class="form-group">
+                        {{ form.groups(class="form-control select-multiple") }}
+                    </div>
 
-                <!-- Dynamically Render Buttons Based on Messages from JSON -->
-                <div class="mb-3 mt-3">
-                    <button type="submit" name="message" value="message1" class="btn btn-primary btn-sm-lg w-100">{{ messages_dict['message1'] }}</button>
-                </div>
-        
-                <div class="mb-3">
-                    <button type="submit" name="message" value="message2" class="btn btn-primary btn-md w-100">{{ messages_dict['message2'] }}</button>
-                </div>
-        
-                <div class="mb-3">
-                    <button type="submit" name="message" value="message3" class="btn btn-primary btn-md w-100">{{ messages_dict['message3'] }}</button>
-                </div>
-            </form>
+                    <!-- Dynamically Render Buttons Based on Messages from JSON -->
+                    <div class="mb-3 mt-3">
+                        <button type="submit" name="message" value="message1" class="btn btn-primary btn-sm-lg w-100">Send: {{ messages_dict['message1'] }}</button>
+                    </div>
+            
+                    <div class="mb-3">
+                        <button type="submit" name="message" value="message2" class="btn btn-primary btn-md w-100">Send: {{ messages_dict['message2'] }}</button>
+                    </div>
+            
+                    <div class="mb-3">
+                        <button type="submit" name="message" value="message3" class="btn btn-primary btn-md w-100">Send: {{ messages_dict['message3'] }}</button>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 </div>

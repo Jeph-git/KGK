@@ -5,17 +5,14 @@ from forms import OptionForm
 from blueprints.all_choices import all_choices
 from blueprints.web_settings import web_setting
 
+from utils import load_messages
+
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'your_secret_key'
 
 app.register_blueprint(all_choices)
 app.register_blueprint(web_setting)
 
-
-# Function to load messages from a JSON file
-def load_messages():
-    with open('messages.json', 'r') as file:
-        return json.load(file)
 
 @app.route('/', methods=['GET', 'POST'])
 def home():
@@ -31,9 +28,14 @@ def home():
             for group in selected_groups:
                 messages.append(group)
                 print(f"{group} got {messages_dict.get(message_type, 'unknown message')}")  # For server logs
-            flash_message = ', '.join(messages)
+            # flash_message = ', '.join(messages)
+            if len(messages) == 1:
+                flash_message = messages[0]
+            else:
+                flash_message = ", ".join(messages[:-1]) +" & "+messages[-1]
+
             # Flash the message that corresponds to the message type
-            flash(f'{flash_message} got {messages_dict.get(message_type, "unknown message")}', 'success')
+            flash(f'{flash_message} fikk {messages_dict.get(message_type, "unknown message")}', 'success')
         else:
             flash('Velg en gruppe.', 'warning')
 

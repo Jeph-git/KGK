@@ -5,7 +5,7 @@ from wtforms.validators import DataRequired
 class OptionForm(FlaskForm):
     groups = SelectMultipleField(
         'Choose groups', 
-        choices=[('Oslobuss', 'Oslobuss'), ('Unibuss', 'Unibuss')]
+        choices=[('Oslobuss', 'Oslobuss'), ('Unibuss', 'Unibuss'), ('Ruter', 'Ruter')],
     )
 
 class MessageForm(FlaskForm):

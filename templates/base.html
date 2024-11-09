@@ -52,7 +52,9 @@
             display: none;
         }
 
-
+        body {
+            margin-bottom: 86px; /* Add margin to the bottom of the body */
+        }
         
     </style>
 </head>
@@ -79,13 +81,13 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link {% if active == 'home' %}active{% endif %}" href="{{ url_for('home') }}">Home</a>
+                        <a class="nav-link {% if active == 'home' %}active{% endif %}" href="{{ url_for('home') }}">Hjem</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {% if active == 'more' %}active{% endif %}" href="{{ url_for('more.choices_func') }}">More</a>
+                        <a class="nav-link {% if active == 'more' %}active{% endif %}" href="{{ url_for('more.choices_func') }}">Mer</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {% if active == 'settings' %}active{% endif %}" href="{{ url_for('settings.settings') }}">Settings</a>
+                        <a class="nav-link {% if active == 'settings' %}active{% endif %}" href="{{ url_for('settings.settings') }}">Innstillinger</a>
                     </li>
 
                 </ul>
@@ -99,13 +101,13 @@
             <li class="nav-item ms-3">
                 <a class="nav-link d-flex flex-column align-items-center {% if active == 'home' %}active{% endif %}" href="{{ url_for('home') }}">
                     <i class="bi bi-house"></i>
-                    <span>Home</span>
+                    <span>Hjem</span>
                 </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link d-flex flex-column align-items-center {% if active == 'more' %}active{% endif %}" href="{{ url_for('more.choices_func') }}">
                     <i class="bi bi-three-dots"></i>
-                    <span>More</span>
+                    <span>Mer</span>
                 </a>
             </li>
             <!-- <li class="nav-item">
@@ -117,7 +119,7 @@
             <li class="nav-item me-3">
                 <a class="nav-link d-flex flex-column align-items-center {% if active == 'settings' %}active{% endif %}" href="{{ url_for('settings.settings') }}">
                     <i class="bi bi-gear"></i>
-                    <span>Settings</span>
+                    <span>Innstillinger</span>
                 </a>
             </li>
         </ul>
@@ -140,7 +142,7 @@
     <script>
         $(document).ready(function() {
             $('.select-multiple').select2({
-                placeholder: "Velg grupper",
+                placeholder: "Velg selskap",
                 allowClear: true,
                 width: '100%',
             });
