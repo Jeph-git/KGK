@@ -18,16 +18,16 @@
     </div>
 </div>
 
-<div class="container-fluid mt-5">
-    <h1>Bus Overview</h1>
+<div class="container-fluid mt-5 px-5">
+    <h1>Buss Oversikt</h1>
     
     <form method="POST">
         <table class="table table-bordered">
             <thead>
                 <tr>
-                    <th>Group</th>
-                    <th>Bus</th>
-                    <th>Select</th>
+                    <th>Selskap</th>
+                    <th>Buss</th>
+                    <th>Velg</th>
                 </tr>
             </thead>
             <tbody>
@@ -53,7 +53,7 @@
         
         <!-- Select message to send -->
         <div class="form-group mt-3">
-            <label for="message">Select Message:</label>
+            <label for="message">Velg sendt melding:</label>
             <select name="message" id="message" class="form-control">
                 {% for message_type, message_text in messages.items() %}
                     <option value="{{ message_text }}">{{ message_text }}</option>
@@ -62,7 +62,7 @@
         </div>
         
         <!-- Submit button -->
-        <button type="submit" class="btn btn-primary mt-3">Send Message</button>
+        <button type="submit" class="btn btn-primary mt-3">Send melding</button>
     </form>
 </div>
 

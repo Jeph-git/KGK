@@ -23,18 +23,23 @@
         </div>
     </div>
 
-    <h1 class="mt-4">Settings</h1>
+    <h1 class="mt-1">Instillinger</h1>
 
-    <div class="container-fluid col-12 mt-3">
-        <div class="container d-flex flex-column ">
-            <div class="row mb-2 col-lg-4">
-                <button type="button" class="btn btn-primary text-nowrap" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="message1">Endre meldingstype 1</button>
-            </div>
-            <div class="row mb-2 col-lg-4">
-                <button type="button" class="btn btn-primary text-nowrap" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="message2">Endre meldingstype 2</button>
-            </div>
-            <div class="row  col-lg-4">
-                <button type="button" class="btn btn-primary text-nowrap" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="message3">Endre meldingstype 3</button>
+    <div class="container-fluid mt-3">
+        <div class="row ">
+            <div class="col-lg-6 col-md-8 col-sm-10 border border-2 p-2 rounded">
+                <h4 class="mb-3 text-primary">Endre meldinger</h2>
+                <div class="d-flex flex-column">
+                    <div class="mb-2">
+                        <button type="button" class="btn btn-primary text-nowrap w-100" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="message1">Endre meldingstype 1</button>
+                    </div>
+                    <div class="mb-2">
+                        <button type="button" class="btn btn-primary text-nowrap w-100" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="message2">Endre meldingstype 2</button>
+                    </div>
+                    <div class="mb-2">
+                        <button type="button" class="btn btn-primary text-nowrap w-100" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="message3">Endre meldingstype 3</button>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -43,7 +48,7 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Change message</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">Endre melding</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
@@ -51,10 +56,10 @@
                             {{ form.hidden_tag() }}
                             <input type="hidden" name="modal_message_type" id="modal_message_type">
                             <div class="mb-3">
-                                <label for="message-text" class="col-form-label">Message:</label>
+                                <label for="message-text" class="col-form-label">Melding:</label>
                                 {{ form.message(class="form-control", id="message-text") }}
                             </div>
-                            <button type="submit" class="btn btn-primary">Save message</button>
+                            <button type="submit" class="btn btn-primary">Lagre</button>
                         </form>
                     </div>
                 </div>
