@@ -18,7 +18,7 @@
     </div>
 </div>
 
-<div class="container-fluid mt-5 px-5">
+<div class="container-fluid mt-5">
     <h1>Buss Oversikt</h1>
     
     <form method="POST">
@@ -36,7 +36,7 @@
                     <tr>
                         <td rowspan="{{ buses|length + 1 }}">
                             {{ group }}<br>
-                            <input type="checkbox" class="select-all" data-group="{{ group }}"> Select All
+                            <input type="checkbox" class="select-all" data-group="{{ group }}"> Velg alle
                         </td>
                     </tr>
                     {% for bus in buses %}
