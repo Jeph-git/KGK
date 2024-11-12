@@ -95,25 +95,27 @@
         </div>
     </nav>
 
+
+    
     <!-- Bottom navbar for smaller screens -->
     <nav class="navbar fixed-bottom navbar-expand-sm bg-primary navbar-dark d-block d-sm-none shadow-lg">
         <ul class="navbar-nav mx-auto flex-row gap-3 justify-content-between w-100">
             <li class="nav-item ms-3">
                 <a class="nav-link d-flex flex-column align-items-center {% if active == 'home' %}active{% endif %}" href="{{ url_for('home') }}">
-                    <i class="bi bi-house"></i>
+                    <i class="bi bi-house h4"></i>
                     <!-- <span>Hjem</span> -->
                 </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link d-flex flex-column align-items-center {% if active == 'more' %}active{% endif %} mx-auto" href="{{ url_for('more.choices_func') }}">
                     <!-- <i class="bi bi-three-dots"></i> -->
-                    <i class="bi bi-briefcase"></i>
+                    <i class="bi bi-briefcase h4"></i>
                     <!-- <span>Mer</span> -->
                 </a>
             </li>
             <li class="nav-item me-3">
                 <a class="nav-link d-flex flex-column align-items-center {% if active == 'settings' %}active{% endif %}" href="{{ url_for('settings.settings') }}">
-                    <i class="bi bi-gear"></i>
+                    <i class="bi bi-gear h4"></i>
                     <!-- <span>Innstillinger</span> -->
                 </a>
             </li>
