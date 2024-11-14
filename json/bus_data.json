@@ -1,0 +1,12 @@
+{
+    "company": ["Unibuss", "Oslobuss", "Ruter", "Brakar"],
+    "buses":[
+        {
+            "Unibuss":["Buss 1", "Buss 2", "Buss 3", "Buss 4", "Buss 5", "Buss 6", "Buss 7", "Buss 8"],
+            "Oslobuss": ["Buss A", "Buss B", "Buss C", "Buss D", "Buss E"],
+            "Ruter": ["Buss X", "Buss Y", "Buss Z"],
+            "Brakar": ["Buss En", "Buss To", "Buss Tre"]
+        }
+    ]
+}
+

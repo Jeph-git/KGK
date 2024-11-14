@@ -62,8 +62,10 @@
 
 
 
-    <header class="bg-primary text-white text-center py-2 ">
-        <h1 class="d-block d-sm-none">KGK</h1>
+
+    </div>
+    <header class="bg-primary text-white text-center py-2 d-block d-sm-none">
+        <h1 class="d-block d-sm-none display-1 fw-bold">KGK</h1>
     </header>
 
         {% block content %}
@@ -72,10 +74,10 @@
         {% endblock %}
 
     <!-- Top Navbar for larger screens -->
-    <nav class="navbar navbar-expand-lg bg-light navbar-light d-none d-sm-block fixed-top">
+    <nav class="navbar navbar-expand-lg bg-primary navbar-light d-none d-sm-block fixed-top">
         <div class="container">
-            <a class="navbar-brand text-primary mb-0 h1" href="{{ url_for('home') }}">KGK</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <a class="navbar-brand text-light mb-0 h1 mx-auto" href="">KGK</a>
+            <!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
@@ -84,43 +86,49 @@
                         <a class="nav-link {% if active == 'home' %}active{% endif %}" href="{{ url_for('home') }}">Hjem</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link {% if active == 'more' %}active{% endif %}" href="{{ url_for('dashboard.dashboard_home') }}">Dashboard</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link {% if active == 'more' %}active{% endif %}" href="{{ url_for('more.choices_func') }}">Buss oversikt</a>
                     </li>
+
                     <li class="nav-item">
                         <a class="nav-link {% if active == 'settings' %}active{% endif %}" href="{{ url_for('settings.settings') }}">Innstillinger</a>
                     </li>
 
                 </ul>
-            </div>
+            </div> -->
         </div>
+       
     </nav>
-
+    
 
     
     <!-- Bottom navbar for smaller screens -->
-    <nav class="navbar fixed-bottom navbar-expand-sm bg-primary navbar-dark d-block d-sm-none shadow-lg">
+    <!-- <nav class="navbar fixed-bottom navbar-expand-sm bg-primary navbar-dark d-block d-sm-none shadow-lg">
         <ul class="navbar-nav mx-auto flex-row gap-3 justify-content-between w-100">
             <li class="nav-item ms-3">
                 <a class="nav-link d-flex flex-column align-items-center {% if active == 'home' %}active{% endif %}" href="{{ url_for('home') }}">
                     <i class="bi bi-house h4"></i>
-                    <!-- <span>Hjem</span> -->
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link d-flex flex-column align-items-center {% if active == 'more' %}active{% endif %} mx-auto" href="{{ url_for('dashboard.dashboard_home') }}">
+                    <i class="bi bi-speedometer2 h4"></i>
                 </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link d-flex flex-column align-items-center {% if active == 'more' %}active{% endif %} mx-auto" href="{{ url_for('more.choices_func') }}">
-                    <!-- <i class="bi bi-three-dots"></i> -->
                     <i class="bi bi-briefcase h4"></i>
-                    <!-- <span>Mer</span> -->
                 </a>
             </li>
             <li class="nav-item me-3">
                 <a class="nav-link d-flex flex-column align-items-center {% if active == 'settings' %}active{% endif %}" href="{{ url_for('settings.settings') }}">
                     <i class="bi bi-gear h4"></i>
-                    <!-- <span>Innstillinger</span> -->
                 </a>
             </li>
         </ul>
-    </nav>
+    </nav> -->
 
 
 

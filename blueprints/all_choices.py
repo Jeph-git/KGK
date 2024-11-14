@@ -1,6 +1,8 @@
 from flask import Blueprint, render_template, request, flash, redirect, url_for
 import json
 from utils import load_messages
+from utils import load_bus_data
+
 all_choices = Blueprint('more', __name__)
 
 
@@ -17,11 +19,7 @@ def format_buses(buses):
 # Route to display the groups and their subgroups (buses)
 @all_choices.route('/more', methods=['GET', 'POST'])
 def choices_func():
-    bus_data = {
-        'Unibuss': ['Buss 1', 'Buss 2', 'Buss 3', 'Buss 4', 'Buss 5'],
-        'Oslobuss': ['Buss A', 'Buss B', 'Buss C', 'Buss D', 'Buss E']
-    }
-    
+    bus_data = load_bus_data()  # Load bus data from JSON
     messages = load_messages()  # Load messages from JSON
 
     if request.method == 'POST':
