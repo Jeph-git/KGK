@@ -4,6 +4,7 @@ from forms import OptionForm
 
 from blueprints.all_choices import all_choices
 from blueprints.web_settings import web_setting
+from blueprints.dashboard import dashboard
 
 from utils import load_messages
 
@@ -12,7 +13,7 @@ app.config['SECRET_KEY'] = 'your_secret_key'
 
 app.register_blueprint(all_choices)
 app.register_blueprint(web_setting)
-
+app.register_blueprint(dashboard)
 
 @app.route('/', methods=['GET', 'POST'])
 def home():
@@ -46,4 +47,4 @@ def home():
 
 if __name__ == '__main__':
     # app.run(debug=True, host= '192.168.10.222') # This one for running on local network
-    app.run(debug=True)
+    app.run(debug=True, use_reloader=True) 
