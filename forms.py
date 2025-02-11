@@ -25,7 +25,15 @@ class ChooseMessage(FlaskForm):
         choices=[(value, value) for value in messages.values()],
     )
 
-class ChooseBus(FlaskForm):
+    
+class ChooseMessageForChange(FlaskForm):
+    messages = load_messages()
+    message = SelectField(
+        'Choose message',
+        choices=[(value, value) for value in messages.values()],
+    )
+
+class ChooseCompany(FlaskForm):
     bus_data = load_bus_data()
     companies = list(bus_data['company'])
     company = SelectField(

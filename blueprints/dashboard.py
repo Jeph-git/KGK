@@ -1,38 +1,35 @@
 from flask import Blueprint, render_template, request, redirect, url_for, flash, jsonify, session
 from utils import load_messages, load_bus_data, load_messages_sent
-from forms import ChooseBus, ChooseMessage
+from forms import ChooseCompany, ChooseMessage, ChooseMessageForChange
 
 
 dashboard = Blueprint('dashboard', __name__)
 
 @dashboard.route('/dashboard', methods=['GET', 'POST'])
 def dashboard_home():
-    choose_bus_form = ChooseBus()
+    choose_company_form = ChooseCompany()
     select_message_form = ChooseMessage()
-    # On POST request, process the form submission
+    select_message_for_change = ChooseMessageForChange()
+
     if request.method == 'POST':
-        if choose_bus_form.validate_on_submit():
-            selected_company = choose_bus_form.company.data
+        # Determine which form was submitted
+        if 'submit_select_message' in request.form and select_message_form.validate_on_submit():
+            selected_message = select_message_form.message.data
+            print(f"Selected message: {selected_message}")
+            flash(f"{selected_message} ble sendt", 'success')
+
+        elif 'submit_change_message' in request.form and select_message_for_change.validate_on_submit():
+            selected_message = select_message_for_change.message.data
+            print(f"Selected message for change: {selected_message}")
+            flash(f"{selected_message} ble endret", 'success')
+
+        elif choose_company_form.validate_on_submit():
+            selected_company = choose_company_form.company.data
             session['selected_company'] = selected_company
             print('Selected company from form:', selected_company)
-        else:
-            print(f'Selected session company: {session.get("selected_company")}')
-            selected_company = session.get('selected_company')
 
-        # Process the message selection
-        if select_message_form.validate_on_submit():
-            selected_message = select_message_form.message.data
-            # Process the selected message, for example, save it to the session or send it to an API
-            print(f"Selected message: {selected_message}")
-            # You can store the selected message in the session or redirect to a new page as needed
-            flash(f"Message '{selected_message}' selected!", 'success')
-            
-    else:
-        # On GET request, default to 'Unibuss' or use the selected company from session
-        selected_company = session.get('selected_company', 'Unibuss')
-        print(selected_company)
-
-    choose_bus_form.company.data = selected_company
+    selected_company = session.get('selected_company', 'Unibuss')
+    choose_company_form.company.data = selected_company
     #Load messages
     messages_dict = load_messages()
 
@@ -58,6 +55,8 @@ def dashboard_home():
                            messages_sent=messages_sent,
                            company=selected_company,
                            buses=selected_buses,
-                           choose_bus_form=choose_bus_form, 
+                           choose_company_form=choose_company_form, 
                            select_message_form=select_message_form,
-                           messages_dict=messages_dict)
+                           messages_dict=messages_dict,
+                           select_message_for_change=select_message_for_change
+                           )
