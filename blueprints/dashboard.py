@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, request, redirect, url_for, flash, jsonify, session
-from utils import load_messages, load_bus_data, load_messages_sent
+from utils import load_messages, load_bus_data, load_messages_sent, save_messages_sent
 from forms import ChooseCompany, ChooseMessage, ChooseMessageForChange
 
 
@@ -15,8 +15,15 @@ def dashboard_home():
         # Determine which form was submitted
         if 'submit_select_message' in request.form and select_message_form.validate_on_submit():
             selected_message = select_message_form.message.data
+            messages_sent = load_messages_sent()
+            messages_sent['messages_sent'] += 1
+            save_messages_sent(messages_sent)
+            # print(f'Messages sent: {messages_sent[0]}')
+            
+
             print(f"Selected message: {selected_message}")
-            flash(f"{selected_message} ble sendt", 'success')
+            # flash(f"{selected_message} ble sendt", 'success')
+            flash({'header': 'Melding sendt!', 'body': f'{selected_message} ble sendt'}, 'success')
 
         elif 'submit_change_message' in request.form and select_message_for_change.validate_on_submit():
             selected_message = select_message_for_change.message.data

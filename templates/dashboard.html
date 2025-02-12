@@ -86,12 +86,12 @@
                         <div class="container d-flex p-0 flex-column align-items-start">
                             <h2 id="dashboard" class="section-offset">Dashboard</h2>
                 
-                            {% for type, message in get_flashed_messages(with_categories=true) %}
+                            <!-- {% for type, message in get_flashed_messages(with_categories=true) %}
                             <div class="alert {% if type == 'success' %}alert-success{% elif type == 'danger' %}alert-danger{% endif %} alert-dismissible fade show col-sm-6 col-lg-3 opacity-75" role="alert" data-mdb-delay="3000">
                               {{ message }}
                               <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                             </div>
-                            {% endfor %}
+                            {% endfor %} -->
                 
                         </div>
 
@@ -117,7 +117,7 @@
                             <div class="card  w-100 border-0">
                                 <div class="card-body">
                                     <h5 class="card-title">Meldinger sendt</h5>
-                                    <p class="card-text">Antall meldinger sendt: {{ messages_sent[0 ]}}</p>
+                                    <p class="card-text">Totalt antall meldinger sendt: {{ messages_sent['messages_sent'] }}</p>
                                 </div>
                             </div>
                         </div>

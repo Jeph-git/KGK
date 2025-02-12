@@ -8,7 +8,7 @@
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.5.0/font/bootstrap-icons.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='dist/css/custom.css') }}">  
-
+    
 
     <!-- New imports SELECT2 -->
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
@@ -59,6 +59,13 @@
     </style>
 </head>
 <body class="mt-lg-5 mt-md-5 mt-sm-5">
+
+    {# Application Flashes with Toasts #}
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        {% include 'components/toasts.html' %}
+    {% endif %}
+    {% endwith %}
 
 <script>
     // Bootstrap dark mode toggle added to top to prevent flickering
@@ -229,6 +236,7 @@
 
     <!-- Custom script to initialize Select2 -->
     <script>
+        // Initialize Select2
         $(document).ready(function() {
             $('.select-multiple').select2({
                 placeholder: "Velg selskap",
@@ -238,7 +246,15 @@
 
         });
 
-
+        // Toasts
+        document.addEventListener('DOMContentLoaded', function () {
+            var toastElList = [].slice.call(document.querySelectorAll('.toast'))
+            var toastList = toastElList.map(function (toastEl) {
+                return new bootstrap.Toast(toastEl, { autohide: true, delay: 5000 })
+            })
+            toastList.forEach(toast => toast.show())
+        });
+        
 
         
     </script>

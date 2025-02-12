@@ -17,5 +17,9 @@ def load_bus_data():
 
 def load_messages_sent():
     with open('json/messages_sent.json', 'r') as file:
-        data = json.load(file)
-        return list(data.values())
+        return json.load(file)
+        # return list(data.values())
+    
+def save_messages_sent(messages_sent):
+    with open('json/messages_sent.json', 'w') as file:
+        json.dump(messages_sent, file)
