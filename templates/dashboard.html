@@ -3,20 +3,6 @@
 {% block title %}Dashboard - KGK{% endblock %}
 
 {% block content %}
-<style>
-    /* This is so that scrollspy scrolls to the correct place */
-    .section-offsett {
-        padding-top: 60px;  /* Adjust based on navbar height */
-        margin-top: -60px;  /* Same value as padding to visually align section */
-    }
-
-
-    .table-wrap {
-        height: 235px;
-        overflow-y: auto;
-      }
-</style>
-
 <body>
 
 
@@ -180,20 +166,21 @@
                         {{ select_message_form.hidden_tag() }}
                         
                         <div class="input-group mb-3">
-                            <!-- <label for="message_select" class="form-label">Velg melding</label> -->
-                            {{ select_message_form.message(class="form-select", id="message_select",) }}
-                            <button class="btn btn-primary" type="submit" name="submit_select_message" id="button-addon2"  >Send Melding</button>
+                            {{ select_message_form.message(class="form-select", id="message_select") }}
+                            {{ select_message_form.phone_number(class="form-control form-font",placeholder="Telefonnummer") }}
+                            
+                            <button class="btn btn-primary btn-sm d-block d-sm-none rounded-end" type="submit" name="submit_select_message" id="button-addon2">Send Melding</button>
+                            <button class="btn btn-primary d-none d-sm-block rounded-end" type="submit" name="submit_select_message" id="button-addon2">Send Melding</button>
                         </div>
-                        
                     </form>
                 </div>
 
                 <hr>
                 <!-- SETTINGS -->
                 <!-- TODO Add functionality to be able to change message  -->
-                <div class="container">
+                <div class="container b p-1">
                     <h2 id="settings" class="section-offset">Innstillinger</h2>
-                    <form id="select_message_for_change" method="POST">
+                    <!-- <form id="select_message_for_change" method="POST">
                         {{ select_message_for_change.hidden_tag() }}
                         
                         <div class="input-group mb-3">
@@ -201,11 +188,11 @@
                             <button class="btn btn-primary" type="submit" id="button-addon3" name="submit_change_message" >Endre Melding</button>
                         </div>
                         
-                    </form>
+                    </form> -->
 
                     <!-- Theme Toggle -->
                     <label for="theme-toggle">Endre Tema</label>
-                    <div class="btn-group " role="group" aria-label="Theme Toggle">
+                    <div class="btn-group" role="group" aria-label="Theme Toggle">
                         <button type="button" class="btn btn-light section-offset" data-bs-theme-value="light">Lys</button>
                         <button type="button" class="btn btn-dark" data-bs-theme-value="dark">Mørk</button>
                         <button type="button" class="btn btn-secondary" data-bs-theme-value="auto">Auto</button>

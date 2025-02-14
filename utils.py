@@ -4,8 +4,13 @@ import json
 
 # Dummy DB Json files
 def load_messages():
-    with open('json/messages.json', 'r') as file:
-        return json.load(file)
+    # with open('json/messages.json', 'r') as file:
+    #     return json.load(file)
+    return {
+        "BYPASS": "BYPASS",
+        "BYPASS_OFF": "BYPASS OFF",
+        
+    }
 
 def save_messages(messages):
     with open('json/messages.json', 'w') as file:
