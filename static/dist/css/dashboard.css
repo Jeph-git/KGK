@@ -1,0 +1,19 @@
+.section-offsett {
+    padding-top: 60px;  /* Adjust based on navbar height */
+    margin-top: -60px;  /* Same value as padding to visually align section */
+}
+
+.table-wrap {
+    height: 235px;
+    overflow-y: auto;
+}
+
+
+
+/* For mobile phones: */
+
+
+@media only screen and (min-width: 576px) {
+    /* For desktop: */
+
+}

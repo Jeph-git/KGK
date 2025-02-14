@@ -1,18 +1,12 @@
 from flask import Blueprint, render_template, request, redirect, url_for, flash, jsonify
 import json
 from forms import MessageForm
+from utils import load_messages, save_messages
+
+
 web_setting = Blueprint('settings', __name__)
 
-# Function to load messages from a JSON file
-def load_messages():
-    with open('messages.json', 'r') as file:
-        messages = json.load(file)
-    return messages
 
-# Function to save messages to a JSON file
-def save_messages(messages):
-    with open('messages.json', 'w') as file:
-        json.dump(messages, file)
 
 @web_setting.route('/settings', methods=['GET', 'POST'])
 def settings():

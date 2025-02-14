@@ -3,49 +3,37 @@
 {% block title %}Hjem - KGK{% endblock %}
 
 {% block content %}
+<body class="bg-primary text-white min-vh-100 " style="background-color: var(--bs-primary);padding-top:50px;">
+    
 
-<div class="container">
-    <div class="container-fluid position-relative" style="padding-top: 60px;">
-        <div class="row justify-content-center">
-            <div class="col-12 col-sm-10 col-md-8 col-lg-6">
-                {% for type, message in get_flashed_messages(with_categories=true) %}
-                    <div id="flash-message" class="alert {% if type == 'success' %}alert-success{% elif type == 'danger' %}alert-danger{% elif type == 'warning' %}alert-warning{% endif %} alert-dismissible fade show position-absolute top-50 start-50 translate-middle mt-4 w-100 " role="alert" style="z-index: 1050;">
-                        {{ message }}
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div>
-                {% endfor %}
+
+    <div class="container mt-5">
+
+        <div class="px-4 py-5 my-5 text-center bg-light rounded-3 border shadow-lg" >
+            <h1 class="display-5 fw-bold text-dark"><span class="text-primary">KGK</span> Tech Demo</h1>
+            <div class="col-lg-6 mx-auto">
+              <p class="lead mb-4 text-dark">Dette er en demo som viser hvordan du enkelt kan gi instruksjoner til busser gjennom et brukervennlig grensesnitt med god brukeropplevelse.</p>
+              <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+                <a href="{{ url_for('dashboard.dashboard_home') }}" class="btn btn-primary btn-lg px-4 gap-3" role="button">Vis Dashboard</a>
+
+               
+              </div>
             </div>
-        </div>
+          </div>
+
+
     </div>
-    <h1 class="mt-1">Send melding</h1>
 
-    <div class="container-fluid mt-3">
-        <div class="row">
-            <div class="col-12 col-sm-10 col-md-8 col-lg-6 border border-2 p-2 rounded">
 
-                <!-- Option Form -->
-                <form id="optionForm" method="POST">
-                    {{ form.hidden_tag() }}
-                    <div class="form-group">
-                        {{ form.groups(class="form-control select-multiple") }}
-                    </div>
 
-                    <!-- Dynamically Render Buttons Based on Messages from JSON -->
-                    <div class="mb-3 mt-3">
-                        <button type="submit" name="message" value="message1" class="btn btn-primary btn-sm-lg w-100">Send: {{ messages_dict['message1'] }}</button>
-                    </div>
-            
-                    <div class="mb-3">
-                        <button type="submit" name="message" value="message2" class="btn btn-primary btn-md w-100">Send: {{ messages_dict['message2'] }}</button>
-                    </div>
-            
-                    <div class="mb-3">
-                        <button type="submit" name="message" value="message3" class="btn btn-primary btn-md w-100">Send: {{ messages_dict['message3'] }}</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-
+<script>
+    // Initialize all tooltips
+    document.addEventListener('DOMContentLoaded', function () {
+        var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+        var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+            return new bootstrap.Tooltip(tooltipTriggerEl)
+        })
+    });
+</script>
+</body>
 {% endblock %}
