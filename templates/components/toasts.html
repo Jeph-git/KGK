@@ -1,0 +1,56 @@
+<div class="toast-container position-fixed end-0 p-3 pt-0 toast-container-extra" id="toast-stack-container" style="top: 80px;">
+    {% for category, message in messages %}
+        {% if category == 'danger' %}
+            <div class="toast mt-0 border-danger" role="alert" aria-live="assertive" aria-atomic="true" data-bs-autohide="true" data-stack-toast-category="error">
+                <div class="toast-header">
+                    <i class="bi bi-exclamation-circle text-danger" style="font-size: 1.0rem;"></i>&nbsp;&nbsp;
+                    <strong class="me-auto text-black">{{ message.header or 'Action Needed' }}</strong>
+                    <small>{{ message.time or 'Akkurat nå'}}</small>
+                    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+                <div class="toast-body toast-message">
+                    {{ message.body }}
+                </div>
+            </div>
+        {% endif %}
+        {% if category == 'info' %}
+            <div class="toast mt-0 border-info" role="alert" aria-live="assertive" aria-atomic="true" data-bs-autohide="true" data-stack-toast-category="error">
+                <div class="toast-header">
+                    <i class="bi bi-info-circle text-info" style="font-size: 1.0rem;"></i> &nbsp;&nbsp;
+                    <strong class="me-auto text-black">{{ message.header or 'Info' }}</strong>
+                    <small>{{ message.time or 'Akkurat nå'}}</small>
+                    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+                <div class="toast-body toast-message">
+                    {{ message.body }}
+                </div>
+            </div>
+        {% endif %}
+        {% if category == 'success' %}
+            <div class="toast mt-0 border-success" role="alert" aria-live="polite" aria-atomic="true" data-stack-toast-category="info">
+                <div class="toast-header">
+                    <i class="bi bi-check text-success" style="font-size: 1.0rem;"></i> &nbsp;&nbsp;
+                    <strong class="me-auto text-black">{{ message.header or 'Success' }}</strong>
+                    <small>{{ message.time or 'Akkurat nå' }}</small>
+                    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+                <div class="toast-body toast-message">
+                    {{ message.body }}
+                </div>
+            </div>
+        {% endif %}
+        {% if category == 'warning' %}
+            <div class="toast mt-0 border-warning" role="alert" aria-live="assertive" aria-atomic="true" data-bs-autohide="true" data-stack-toast-category="error">
+                <div class="toast-header">
+                    <i class="bi bi-exclamation-triangle text-warning" style="font-size: 1.0rem;"></i> &nbsp;&nbsp;
+                    <strong class="me-auto text-black">{{ message.header or 'Warning' }}</strong>
+                    <small>{{ message.time or 'Akkurat nå' }}</small>
+                    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+                <div class="toast-body toast-message">
+                    {{ message.body }}
+                </div>
+            </div>
+        {% endif %}
+    {% endfor %}
+</div>

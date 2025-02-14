@@ -3,21 +3,9 @@
 {% block title %}Dashboard - KGK{% endblock %}
 
 {% block content %}
-<style>
-    /* This is so that scrollspy scrolls to the correct place */
-    .section-offsett {
-        padding-top: 60px;  /* Adjust based on navbar height */
-        margin-top: -60px;  /* Same value as padding to visually align section */
-    }
-
-
-    .table-wrap {
-        height: 235px;
-        overflow-y: auto;
-      }
-</style>
-
 <body>
+
+
     <nav class="navbar fixed-bottom navbar-expand-sm bg-primary navbar-dark d-block d-sm-none shadow-lg">
         <ul class="navbar-nav mx-auto flex-row gap-3 justify-content-between w-100">
             <li class="nav-item ms-3">
@@ -45,7 +33,7 @@
     <div class="container-fluid ">
         <div class="row flex-nowrap ">
             <!-- Sidebar -->
-            <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-light d-none d-sm-block position-fixed">
+            <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0  d-none d-sm-block position-fixed">
                 <div class="d-flex flex-column align-items-center align-items-sm-start px-0 pt-2 text-white min-vh-100">
                     <a href="/" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
                         <span class="fs-5 d-none d-sm-inline text-dark">Meny</span>
@@ -81,12 +69,23 @@
                 <!-- DASHBOARD -->
                 <div class="container">
                     <div class="container d-flex p-0">
-                        <h2 id="dashboard" class="section-offset">Dashboard</h2>
+                        <div class="container d-flex p-0 flex-column align-items-start">
+                            <h2 id="dashboard" class="section-offset">Dashboard</h2>
+                
+                            <!-- {% for type, message in get_flashed_messages(with_categories=true) %}
+                            <div class="alert {% if type == 'success' %}alert-success{% elif type == 'danger' %}alert-danger{% endif %} alert-dismissible fade show col-sm-6 col-lg-3 opacity-75" role="alert" data-mdb-delay="3000">
+                              {{ message }}
+                              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                            {% endfor %} -->
+                
+                        </div>
+
                         <form id="company_form" method="POST" class="ms-auto">
-                            {{ choose_bus_form.hidden_tag() }}
+                            {{ choose_company_form.hidden_tag() }}
                             <div class="mb-3">
                                 <label for="company" class="form-label fw-bold">Velg buss selskap</label>
-                                {{ choose_bus_form.company(class="form-select", id="company_select") }}  
+                                {{ choose_company_form.company(class="form-select", id="company_select") }}  
                             </div>
                         </form>
                     </div>
@@ -104,7 +103,7 @@
                             <div class="card  w-100 border-0">
                                 <div class="card-body">
                                     <h5 class="card-title">Meldinger sendt</h5>
-                                    <p class="card-text">Antall meldinger sendt: {{ messages_sent[0 ]}}</p>
+                                    <p class="card-text">Totalt antall meldinger sendt: {{ messages_sent['messages_sent'] }}</p>
                                 </div>
                             </div>
                         </div>
@@ -167,30 +166,41 @@
                         {{ select_message_form.hidden_tag() }}
                         
                         <div class="input-group mb-3">
-                            <!-- <label for="message_select" class="form-label">Velg melding</label> -->
-                            {{ select_message_form.message(class="form-select", id="message_select",) }}
-                            <button class="btn btn-outline-primary" type="submit" id="button-addon2"  >Send Melding</button>
+                            {{ select_message_form.message(class="form-select", id="message_select") }}
+                            {{ select_message_form.phone_number(class="form-control form-font",placeholder="Telefonnummer") }}
+                            
+                            <button class="btn btn-primary btn-sm d-block d-sm-none rounded-end" type="submit" name="submit_select_message" id="button-addon2">Send Melding</button>
+                            <button class="btn btn-primary d-none d-sm-block rounded-end" type="submit" name="submit_select_message" id="button-addon2">Send Melding</button>
                         </div>
-                        
                     </form>
                 </div>
 
                 <hr>
                 <!-- SETTINGS -->
                 <!-- TODO Add functionality to be able to change message  -->
-                <div class="container">
+                <div class="container b p-1">
                     <h2 id="settings" class="section-offset">Innstillinger</h2>
-                    <form>
-                        <div class="mb-3">
-                            <label for="notificationSetting" class="form-label">Endre melding</label>
-                            <select class="form-select" id="notificationSetting">
-                                <option selected>Melding 1</option>
-                                <option>Melding 2</option>
-                            </select>
+                    <!-- <form id="select_message_for_change" method="POST">
+                        {{ select_message_for_change.hidden_tag() }}
+                        
+                        <div class="input-group mb-3">
+                            {{ select_message_for_change.message(class="form-select", id="message_select",) }}
+                            <button class="btn btn-primary" type="submit" id="button-addon3" name="submit_change_message" >Endre Melding</button>
                         </div>
-                        <button type="submit" class="btn btn-primary">Lagre innstillinger</button>
-                    </form>
+                        
+                    </form> -->
+
+                    <!-- Theme Toggle -->
+                    <label for="theme-toggle">Endre Tema</label>
+                    <div class="btn-group" role="group" aria-label="Theme Toggle">
+                        <button type="button" class="btn btn-light section-offset" data-bs-theme-value="light">Lys</button>
+                        <button type="button" class="btn btn-dark" data-bs-theme-value="dark">Mørk</button>
+                        <button type="button" class="btn btn-secondary" data-bs-theme-value="auto">Auto</button>
+                    </div>
+
+
                 </div>
+
 
 
 
@@ -248,6 +258,18 @@
             var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
                 return new bootstrap.Tooltip(tooltipTriggerEl)
             })
+        });
+
+        // Automatically close alerts after a delay
+        document.addEventListener('DOMContentLoaded', function() {
+            const alerts = document.querySelectorAll('.alert-dismissible[data-mdb-delay]');
+            alerts.forEach(function(alert) {
+                const delay = parseInt(alert.getAttribute('data-mdb-delay'), 10);
+                setTimeout(function() {
+                    const alertInstance = new bootstrap.Alert(alert);
+                    alertInstance.close();
+                }, delay);
+            });
         });
 
     </script>

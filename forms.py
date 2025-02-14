@@ -22,10 +22,19 @@ class ChooseMessage(FlaskForm):
     messages = load_messages()
     message = SelectField(
         'Choose message',
+        choices=[(key, value) for key, value in messages.items()], 
+    )
+    phone_number = StringField('Phone Number', validators=[DataRequired()])
+
+    
+class ChooseMessageForChange(FlaskForm):
+    messages = load_messages()
+    message = SelectField(
+        'Choose message',
         choices=[(value, value) for value in messages.values()],
     )
 
-class ChooseBus(FlaskForm):
+class ChooseCompany(FlaskForm):
     bus_data = load_bus_data()
     companies = list(bus_data['company'])
     company = SelectField(
